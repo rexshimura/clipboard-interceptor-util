@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CARUT // Clipboard Auto-Redirector Utility</title>
+    <title>Download CARUT</title>
     
     <!-- Tab Header Favicon Integration -->
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/rexshimura/clipboard-interceptor-util/main/logo.ico">
@@ -25,27 +25,11 @@
             width: 100vw;
         }
 
-        /* Fixed structural grid wrapper layer to stop layout shifting */
-        .grid-container {
+        /* Full Screen ShapeGrid Canvas Layer Container */
+        .canvas-container {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            overflow: hidden;
             z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Moving Cyberpunk Grid Matrix */
-        .bg-grid {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(189, 70, 70, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(189, 70, 70, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-            background-position: center center;
-            transform: perspective(500px) rotateX(60deg) translateY(-30%) scale(2);
-            animation: gridScroll 12s linear infinite;
-            opacity: 0.7;
         }
 
         /* Ambient Crimson Background Vignette Glow */
@@ -53,10 +37,10 @@
             position: absolute;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(189, 70, 70, 0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(189, 70, 70, 0.08) 0%, transparent 70%);
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 0;
+            z-index: 1;
             pointer-events: none;
         }
 
@@ -66,7 +50,7 @@
             display: block;
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.18) 50%), linear-gradient(90deg, rgba(189, 70, 70, 0.03), rgba(0, 0, 0, 0.01), rgba(0, 0, 255, 0.02));
             z-index: 99999;
             background-size: 100% 3px, 3px 100%;
             pointer-events: none;
@@ -74,23 +58,23 @@
 
         /* Holographic Frame Wrapper */
         .card {
-            background: linear-gradient(180deg, rgba(20, 20, 25, 0.85) 0%, rgba(10, 10, 12, 0.95) 100%);
-            border: 1px solid rgba(189, 70, 70, 0.2);
+            background: linear-gradient(180deg, rgba(20, 10, 10, 0.88) 0%, rgba(10, 4, 4, 0.97) 100%);
+            border: 1px solid rgba(189, 70, 70, 0.25);
             border-radius: 12px;
             max-width: 540px;
             width: 100%;
             padding: 50px 40px;
             text-align: center;
             box-shadow: 
-                0 30px 80px rgba(0, 0, 0, 0.9), 
-                0 0 40px rgba(189, 70, 70, 0.05),
+                0 30px 80px rgba(0, 0, 0, 0.95), 
+                0 0 40px rgba(189, 70, 70, 0.08),
                 inset 0 0 20px rgba(189, 70, 70, 0.05);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             animation: cardDeploy 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
             transform: translateY(50px) scale(0.96);
-            z-index: 1;
+            z-index: 2;
             position: relative;
         }
 
@@ -107,8 +91,8 @@
             margin-bottom: 8px;
             color: #ffffff;
             font-weight: 900;
-            text-indent: 12px; /* Corrects centering with letter-spacing offset */
-            text-shadow: 0 0 20px rgba(189, 70, 70, 0.4);
+            text-indent: 12px;
+            text-shadow: 0 0 20px rgba(189, 70, 70, 0.5);
         }
 
         /* Live Core Engine Telemetry Badge */
@@ -121,10 +105,10 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(189, 70, 70, 0.08);
+            background: rgba(189, 70, 70, 0.12);
             padding: 6px 16px;
             border-radius: 4px;
-            border: 1px solid rgba(189, 70, 70, 0.2);
+            border: 1px solid rgba(189, 70, 70, 0.3);
             text-transform: uppercase;
         }
 
@@ -141,15 +125,15 @@
         /* Terminal Display Frame Block */
         .features {
             text-align: left;
-            background-color: rgba(7, 7, 9, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            background-color: rgba(5, 2, 2, 0.96);
+            border: 1px solid rgba(189, 70, 70, 0.1);
             border-left: 3px solid #bd4646;
             border-radius: 4px;
             padding: 26px;
             margin-bottom: 45px;
             font-size: 0.85rem;
             line-height: 1.9;
-            color: #a0a0aa;
+            color: #c4a2a2;
             box-shadow: inset 0 4px 20px rgba(0,0,0,0.9);
         }
 
@@ -181,7 +165,7 @@
         /* Premium Reactive Glow Action Core Trigger */
         .download-btn {
             display: inline-block;
-            background: linear-gradient(180deg, #bd4646 0%, #913131 100%);
+            background: linear-gradient(180deg, #bd4646 0%, #7a1d1d 100%);
             color: #ffffff;
             text-decoration: none;
             font-weight: bold;
@@ -191,7 +175,7 @@
             letter-spacing: 3px;
             text-indent: 3px;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 25px rgba(189, 70, 70, 0.3);
+            box-shadow: 0 4px 25px rgba(189, 70, 70, 0.4);
             opacity: 0;
             animation: fadeIn 0.6s ease forwards 1.1s;
             border: 1px solid rgba(255,255,255,0.1);
@@ -216,7 +200,7 @@
 
         .download-btn:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(189, 70, 70, 0.5), 0 0 25px rgba(189, 70, 70, 0.3);
+            box-shadow: 0 12px 35px rgba(189, 70, 70, 0.6), 0 0 25px rgba(189, 70, 70, 0.4);
             background: linear-gradient(180deg, #d84d4d 0%, #bd4646 100%);
         }
 
@@ -228,7 +212,7 @@
         .footer {
             margin-top: 40px;
             font-size: 0.7rem;
-            color: #44444c;
+            color: #634747;
             letter-spacing: 1.5px;
             opacity: 0;
             animation: fadeIn 0.6s ease forwards 1.3s;
@@ -241,11 +225,6 @@
         }
 
         /* --- HARDWARE ACCELERATED ANIMATIONS --- */
-        @keyframes gridScroll {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 60px; }
-        }
-
         @keyframes cardDeploy {
             to {
                 opacity: 1;
@@ -277,9 +256,9 @@
 </head>
 <body>
 
-    <!-- Wrapped grid prevents transform leaking -->
-    <div class="grid-container">
-        <div class="bg-grid"></div>
+    <!-- ShapeGrid HTML Canvas Target Layer -->
+    <div class="canvas-container">
+        <canvas id="shape-grid-canvas" style="width: 100%; height: 100%; border: none; display: block;"></canvas>
     </div>
     
     <div class="bg-glow"></div>
@@ -300,5 +279,327 @@
         <div class="footer">Made by Rexshimura | 2026</div>
     </div>
 
+    <!-- ShapeGrid Script Engine Implementation -->
+    <script>
+        (function() {
+            // Configuration parameters mapped directly from your React Bits requirements
+            const config = {
+                direction: 'diagonal',
+                speed: 0.5,
+                borderColor: 'rgba(189, 70, 70, 0.08)',    // Subtle dark red border grid lines
+                hoverFillColor: 'rgba(189, 70, 70, 0.25)', // Bright glowing dark red active state
+                squareSize: 40,
+                shape: 'square',
+                hoverTrailAmount: 5
+            };
+
+            const canvas = document.getElementById('shape-grid-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            let numSquaresX = 0;
+            let numSquaresY = 0;
+            let gridOffset = { x: 0, y: 0 };
+            let hoveredSquare = null;
+            let trailCells = [];
+            let cellOpacities = new Map();
+            let animationFrameId = null;
+
+            const isHex = config.shape === 'hexagon';
+            const isTri = config.shape === 'triangle';
+            const hexHoriz = config.squareSize * 1.5;
+            const hexVert = config.squareSize * Math.sqrt(3);
+
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+                numSquaresX = Math.ceil(canvas.width / config.squareSize) + 1;
+                numSquaresY = Math.ceil(canvas.height / config.squareSize) + 1;
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            function drawHex(cx, cy, size) {
+                if (!ctx) return;
+                ctx.beginPath();
+                for (let i = 0; i < 6; i++) {
+                    const angle = (Math.PI / 3) * i;
+                    const vx = cx + size * Math.cos(angle);
+                    const vy = cy + size * Math.sin(angle);
+                    if (i === 0) ctx.moveTo(vx, vy);
+                    else ctx.lineTo(vx, vy);
+                }
+                ctx.closePath();
+            }
+
+            function drawCircle(cx, cy, size) {
+                if (!ctx) return;
+                ctx.beginPath();
+                ctx.arc(cx, cy, size / 2, 0, Math.PI * 2);
+                ctx.closePath();
+            }
+
+            function drawTriangle(cx, cy, size, flip) {
+                if (!ctx) return;
+                ctx.beginPath();
+                if (flip) {
+                    ctx.moveTo(cx, cy + size / 2);
+                    ctx.lineTo(cx + size / 2, cy - size / 2);
+                    ctx.lineTo(cx - size / 2, cy - size / 2);
+                } else {
+                    ctx.moveTo(cx, cy - size / 2);
+                    ctx.lineTo(cx + size / 2, cy + size / 2);
+                    ctx.lineTo(cx - size / 2, cy + size / 2);
+                }
+                ctx.closePath();
+            }
+
+            function drawGrid() {
+                if (!ctx) return;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                if (isHex) {
+                    const colShift = Math.floor(gridOffset.x / hexHoriz);
+                    const offsetX = ((gridOffset.x % hexHoriz) + hexHoriz) % hexHoriz;
+                    const offsetY = ((gridOffset.y % hexVert) + hexVert) % hexVert;
+                    const cols = Math.ceil(canvas.width / hexHoriz) + 3;
+                    const rows = Math.ceil(canvas.height / hexVert) + 3;
+
+                    for (let col = -2; col < cols; col++) {
+                        for (let row = -2; row < rows; row++) {
+                            const cx = col * hexHoriz + offsetX;
+                            const cy = row * hexVert + ((col + colShift) % 2 !== 0 ? hexVert / 2 : 0) + offsetY;
+                            const cellKey = `${col},${row}`;
+                            const alpha = cellOpacities.get(cellKey);
+                            
+                            if (alpha) {
+                                ctx.globalAlpha = alpha;
+                                drawHex(cx, cy, config.squareSize);
+                                ctx.fillStyle = config.hoverFillColor;
+                                ctx.fill();
+                                ctx.globalAlpha = 1;
+                            }
+                            drawHex(cx, cy, config.squareSize);
+                            ctx.strokeStyle = config.borderColor;
+                            ctx.stroke();
+                        }
+                    }
+                } else if (isTri) {
+                    const halfW = config.squareSize / 2;
+                    const colShift = Math.floor(gridOffset.x / halfW);
+                    const rowShift = Math.floor(gridOffset.y / config.squareSize);
+                    const offsetX = ((gridOffset.x % halfW) + halfW) % halfW;
+                    const offsetY = ((gridOffset.y % config.squareSize) + config.squareSize) % config.squareSize;
+                    const cols = Math.ceil(canvas.width / halfW) + 4;
+                    const rows = Math.ceil(canvas.height / config.squareSize) + 4;
+
+                    for (let col = -2; col < cols; col++) {
+                        for (let row = -2; row < rows; row++) {
+                            const cx = col * halfW + offsetX;
+                            const cy = row * config.squareSize + config.squareSize / 2 + offsetY;
+                            const flip = ((col + colShift + row + rowShift) % 2 + 2) % 2 !== 0;
+                            const cellKey = `${col},${row}`;
+                            const alpha = cellOpacities.get(cellKey);
+
+                            if (alpha) {
+                                ctx.globalAlpha = alpha;
+                                drawTriangle(cx, cy, config.squareSize, flip);
+                                ctx.fillStyle = config.hoverFillColor;
+                                ctx.fill();
+                                ctx.globalAlpha = 1;
+                            }
+                            drawTriangle(cx, cy, config.squareSize, flip);
+                            ctx.strokeStyle = config.borderColor;
+                            ctx.stroke();
+                        }
+                    }
+                } else if (config.shape === 'circle') {
+                    const offsetX = ((gridOffset.x % config.squareSize) + config.squareSize) % config.squareSize;
+                    const offsetY = ((gridOffset.y % config.squareSize) + config.squareSize) % config.squareSize;
+                    const cols = Math.ceil(canvas.width / config.squareSize) + 3;
+                    const rows = Math.ceil(canvas.height / config.squareSize) + 3;
+
+                    for (let col = -2; col < cols; col++) {
+                        for (let row = -2; row < rows; row++) {
+                            const cx = col * config.squareSize + config.squareSize / 2 + offsetX;
+                            const cy = row * config.squareSize + config.squareSize / 2 + offsetY;
+                            const cellKey = `${col},${row}`;
+                            const alpha = cellOpacities.get(cellKey);
+
+                            if (alpha) {
+                                ctx.globalAlpha = alpha;
+                                drawCircle(cx, cy, config.squareSize);
+                                ctx.fillStyle = config.hoverFillColor;
+                                ctx.fill();
+                                ctx.globalAlpha = 1;
+                            }
+                            drawCircle(cx, cy, config.squareSize);
+                            ctx.strokeStyle = config.borderColor;
+                            ctx.stroke();
+                        }
+                    }
+                } else {
+                    const offsetX = ((gridOffset.x % config.squareSize) + config.squareSize) % config.squareSize;
+                    const offsetY = ((gridOffset.y % config.squareSize) + config.squareSize) % config.squareSize;
+                    const cols = Math.ceil(canvas.width / config.squareSize) + 3;
+                    const rows = Math.ceil(canvas.height / config.squareSize) + 3;
+
+                    for (let col = -2; col < cols; col++) {
+                        for (let row = -2; row < rows; row++) {
+                            const sx = col * config.squareSize + offsetX;
+                            const sy = row * config.squareSize + offsetY;
+                            const cellKey = `${col},${row}`;
+                            const alpha = cellOpacities.get(cellKey);
+
+                            if (alpha) {
+                                ctx.globalAlpha = alpha;
+                                ctx.fillStyle = config.hoverFillColor;
+                                ctx.fillRect(sx, sy, config.squareSize, config.squareSize);
+                                ctx.globalAlpha = 1;
+                            }
+                            ctx.strokeStyle = config.borderColor;
+                            ctx.strokeRect(sx, sy, config.squareSize, config.squareSize);
+                        }
+                    }
+                }
+
+                // Vignette mask set to blend into the precise dark web body background color
+                const gradient = ctx.createRadialGradient(
+                    canvas.width / 2, canvas.height / 2, 0,
+                    canvas.width / 2, canvas.height / 2,
+                    Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
+                );
+                gradient.addColorStop(0, 'rgba(5, 5, 7, 0)');
+                gradient.addColorStop(1, '#050507');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            function updateCellOpacities() {
+                const targets = new Map();
+                if (hoveredSquare) {
+                    targets.set(`${hoveredSquare.x},${hoveredSquare.y}`, 1);
+                }
+                if (config.hoverTrailAmount > 0) {
+                    for (let i = 0; i < trailCells.length; i++) {
+                        const t = trailCells[i];
+                        const key = `${t.x},${t.y}`;
+                        if (!targets.has(key)) {
+                            targets.set(key, (trailCells.length - i) / (trailCells.length + 1));
+                        }
+                    }
+                }
+                for (const [key] of targets) {
+                    if (!cellOpacities.has(key)) {
+                        cellOpacities.set(key, 0);
+                    }
+                }
+                for (const [key, opacity] of cellOpacities) {
+                    const target = targets.get(key) || 0;
+                    const next = opacity + (target - opacity) * 0.15;
+                    if (next < 0.005) {
+                        cellOpacities.delete(key);
+                    } else {
+                        cellOpacities.set(key, next);
+                    }
+                }
+            }
+
+            function updateAnimation() {
+                const effectiveSpeed = Math.max(config.speed, 0.1);
+                const wrapX = isHex ? hexHoriz * 2 : config.squareSize;
+                const wrapY = isHex ? hexVert : isTri ? config.squareSize * 2 : config.squareSize;
+
+                switch (config.direction) {
+                    case 'right':
+                        gridOffset.x = (gridOffset.x - effectiveSpeed + wrapX) % wrapX;
+                        break;
+                    case 'left':
+                        gridOffset.x = (gridOffset.x + effectiveSpeed + wrapX) % wrapX;
+                        break;
+                    case 'up':
+                        gridOffset.y = (gridOffset.y + effectiveSpeed + wrapY) % wrapY;
+                        break;
+                    case 'down':
+                        gridOffset.y = (gridOffset.y - effectiveSpeed + wrapY) % wrapY;
+                        break;
+                    case 'diagonal':
+                        gridOffset.x = (gridOffset.x - effectiveSpeed + wrapX) % wrapX;
+                        gridOffset.y = (gridOffset.y - effectiveSpeed + wrapY) % wrapY;
+                        break;
+                }
+
+                updateCellOpacities();
+                drawGrid();
+                animationFrameId = requestAnimationFrame(updateAnimation);
+            }
+
+            function handleMouseMove(event) {
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = event.clientX - rect.left;
+                const mouseY = event.clientY - rect.top;
+
+                let col = 0, row = 0;
+
+                if (isHex) {
+                    const colShift = Math.floor(gridOffset.x / hexHoriz);
+                    const offsetX = ((gridOffset.x % hexHoriz) + hexHoriz) % hexHoriz;
+                    const offsetY = ((gridOffset.y % hexVert) + hexVert) % hexVert;
+                    const adjustedX = mouseX - offsetX;
+                    const adjustedY = mouseY - offsetY;
+                    col = Math.round(adjustedX / hexHoriz);
+                    const rowOffset = (col + colShift) % 2 !== 0 ? hexVert / 2 : 0;
+                    row = Math.round((adjustedY - rowOffset) / hexVert);
+                } else if (isTri) {
+                    const halfW = config.squareSize / 2;
+                    const offsetX = ((gridOffset.x % halfW) + halfW) % halfW;
+                    const offsetY = ((gridOffset.y % config.squareSize) + config.squareSize) % config.squareSize;
+                    const adjustedX = mouseX - offsetX;
+                    const adjustedY = mouseY - offsetY;
+                    col = Math.round(adjustedX / halfW);
+                    row = Math.floor(adjustedY / config.squareSize);
+                } else if (config.shape === 'circle') {
+                    const offsetX = ((gridOffset.x % config.squareSize) + config.squareSize) % config.squareSize;
+                    const offsetY = ((gridOffset.y % config.squareSize) + config.squareSize) % config.squareSize;
+                    const adjustedX = mouseX - offsetX;
+                    const adjustedY = mouseY - offsetY;
+                    col = Math.round(adjustedX / config.squareSize);
+                    row = Math.round(adjustedY / config.squareSize);
+                } else {
+                    const offsetX = ((gridOffset.x % config.squareSize) + config.squareSize) % config.squareSize;
+                    const offsetY = ((gridOffset.y % config.squareSize) + config.squareSize) % config.squareSize;
+                    const adjustedX = mouseX - offsetX;
+                    const adjustedY = mouseY - offsetY;
+                    col = Math.floor(adjustedX / config.squareSize);
+                    row = Math.floor(adjustedY / config.squareSize);
+                }
+
+                if (!hoveredSquare || hoveredSquare.x !== col || hoveredSquare.y !== row) {
+                    if (hoveredSquare && config.hoverTrailAmount > 0) {
+                        trailCells.unshift({ ...hoveredSquare });
+                        if (trailCells.length > config.hoverTrailAmount) {
+                            trailCells.length = config.hoverTrailAmount;
+                        }
+                    }
+                    hoveredSquare = { x: col, y: row };
+                }
+            }
+
+            function handleMouseLeave() {
+                if (hoveredSquare && config.hoverTrailAmount > 0) {
+                    trailCells.unshift({ ...hoveredSquare });
+                    if (trailCells.length > config.hoverTrailAmount) {
+                        trailCells.length = config.hoverTrailAmount;
+                    }
+                }
+                hoveredSquare = null;
+            }
+
+            canvas.addEventListener('mousemove', handleMouseMove);
+            canvas.addEventListener('mouseleave', handleMouseLeave);
+            animationFrameId = requestAnimationFrame(updateAnimation);
+        })();
+    </script>
 </body>
 </html>
